@@ -12,7 +12,6 @@
 # sudo sh ./Syslog.sh 
 #
 # You can edit the Crontab to make the script executeable on startup and every 24 hours 
-# to make keep the log short
 #
 # crontab -e
 #
