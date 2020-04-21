@@ -1,28 +1,28 @@
-    #!/bin/sh
-    #
-    # Syslog_v4.sh
-    #
-    # Logging G&D devices
-    #
-    # Prerequisite:
-    # Connect the G&D device with the USB to mini USB service cable before starting the script
-    # sudo apt-get install minicom
-    # 
-	# To start the syslog use:
-	# sudo sh /home/pi/Desktop/Syslog/Syslog_v4.sh 
-	#
-	# You can edit the Crontab to make the script executeable on startup and every 24 hours 
-	# to make keep the log short
-	#
-    # crontab -e
-	#
-    # @reboot export DISPLAY=:0.0 && sleep 10 && sudo sh /home/pi/Desktop/Syslog/Syslog_v4.sh
-    # @daily export DISPLAY=:0.0 && sleep 10 && sudo sh /home/pi/Desktop/Syslog/Syslog_v4.sh
-    #
-    # Author: Martin Reiche (PM) & Tom Valk (Service)
-    # Guntermann & Drunck GmbH
-    #
-    # Version: v4.01
+#!/bin/sh
+#
+# Syslog.sh
+#
+# Logging G&D devices
+#
+# Prerequisite:
+# Connect the G&D device with the USB to mini USB service cable before starting the script
+# sudo apt-get install minicom
+# 
+# To start the syslog use:
+# sudo sh ./Syslog.sh 
+#
+# You can edit the Crontab to make the script executeable on startup and every 24 hours 
+# to make keep the log short
+#
+# crontab -e
+#
+# @reboot export DISPLAY=:0.0 XAUTHORITY=/home/pi/.Xauthority && sleep 10 && sudo sh /home/pi/Desktop/Syslog/Syslog.sh
+# @daily export DISPLAY=:0.0 XAUTHORITY=/home/pi/.Xauthority  && sleep 10 && sudo sh /home/pi/Desktop/Syslog/Syslog.sh
+#
+# Author: Tom Valk
+# Guntermann & Drunck GmbH
+#
+# Version: v4.2
 
 # Please check the path of the variables below:
 BACKUP_SOURCE="/home/pi/Desktop/Syslog/Logs/"
@@ -46,7 +46,6 @@ sudo mkdir ${BACKUP_DEST} 2> /dev/null
 
 echo "[Done]"
 echo
-
 
 #If there are already log files in the folder, start backup...
   if [ -d ${BACKUP_SOURCE} ]
@@ -74,7 +73,7 @@ echo "Start logging via minicom..."
   do
     TTYUSB="$(echo ${LINE}|cut -d'/' -f3)"
     lxterminal -T "${TTYUSB}" -e sudo minicom -D ${LINE} -C ${BACKUP_SOURCE}${TTYUSB}.txt &
-	sleep 5s
+    sleep 5s
   done < /tmp/found_tty.txt
 
 echo "[Done]"
@@ -83,6 +82,6 @@ echo "Script complete, cleaning up..."
      rm /tmp/found_tty.txt
 echo "[Done]"
 echo
-echo "Martin Reiche (PM) & Tom Valk (Service)"
+echo "Tom Valk"
 echo "Guntermann & Drunck GmbH"
 echo
