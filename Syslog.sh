@@ -15,17 +15,17 @@
 #
 # crontab -e
 #
-# @reboot export DISPLAY=:0.0 XAUTHORITY=/home/pi/.Xauthority && sleep 10 && sudo sh /home/pi/Desktop/Syslog/Syslog.sh
-# @daily export DISPLAY=:0.0 XAUTHORITY=/home/pi/.Xauthority  && sleep 10 && sudo sh /home/pi/Desktop/Syslog/Syslog.sh
+# @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && sudo sh *PATH*/Syslog.sh
+# @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && sudo sh *PATH*/Syslog.sh
 #
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
 #
-# Version: v4.2
+# Version: v5
 
 # Please check the path of the variables below:
-BACKUP_SOURCE="/home/pi/Desktop/Syslog/Logs/"
-BACKUP_DEST="/home/pi/Desktop/Syslog/Backup/"
+BACKUP_SOURCE="./Syslog/Logs/"
+BACKUP_DEST="./Syslog/Backup/"
 
 # Filename for the Backup
 FILENAME="Backup_$(date '+%F_%H.%M.%S').tgz"
@@ -37,49 +37,60 @@ echo
 #Kill minicom
 sudo pkill -9 minicom
 
-echo "Creating BACKUP_SOURCE and BACKUP_DEST..."
-
 #Check if the folders are created:
-sudo mkdir ${BACKUP_SOURCE} 2> /dev/null
-sudo mkdir ${BACKUP_DEST} 2> /dev/null
-
-echo "[Done]"
-echo
+ if [ ! -d ${BACKUP_SOURCE} ]
+        then
+		echo "Creating BACKUP_SOURCE and BACKUP_DEST..."
+		sudo mkdir -p -m=777 ${BACKUP_SOURCE}
+		sudo mkdir -p -m=777 ${BACKUP_DEST}
+		echo "[Done]"
+		echo
+fi
 
 #If there are already log files in the folder, start backup...
-  if [ -d ${BACKUP_SOURCE} ]
-	then
-		echo "Backing up old log files"
-			cd ${BACKUP_SOURCE} && \
-			tar cvPzf ${BACKUP_DEST}/${FILENAME} `ls -1 ${BACKUP_SOURCE}` 2> /dev/null  && \
-			rm  ${BACKUP_SOURCE}/*.txt
-			cd ~
-		echo ${FILENAME}	
-		echo "[Done]"
+  if [ -f ${BACKUP_SOURCE}/*.txt ]
+        then
+                echo "Backing up old log files..."
+                        tar cvPzf ${BACKUP_DEST}/${FILENAME} ${BACKUP_SOURCE}
+                        rm  ${BACKUP_SOURCE}/*.txt
+                echo ${FILENAME}
+                echo "[Done]"
+		echo
   fi
-echo
+  
+#determine all ttyUSB connections
 echo "Searching for ttyUSB..."
 
-#determine all ttyUSB connections
-ls -A1B /dev/ttyUSB* > /tmp/found_tty.txt
-ls -A1B /dev/ttyUSB*
-echo "[Done]"
-echo
-echo "Start logging via minicom..."
+ls -A1B /dev/ttyUSB* > /tmp/found_tty.txt 2> /dev/null
+if [ -s /tmp/found_tty.txt ]
+	then
+		ls -A1B /dev/ttyUSB*
+		echo "[Done]"
+		echo
+		echo "Start logging via minicom..."
 
-#Start minicom for each ttyUSB
-  while read LINE
-  do
-    TTYUSB="$(echo ${LINE}|cut -d'/' -f3)"
-    lxterminal -T "${TTYUSB}" -e sudo minicom -D ${LINE} -C ${BACKUP_SOURCE}${TTYUSB}.txt &
-    sleep 5s
-  done < /tmp/found_tty.txt
-
-echo "[Done]"
-echo
-echo "Script complete, cleaning up..."
-     rm /tmp/found_tty.txt
-echo "[Done]"
+		#Start minicom for each ttyUSB
+  		while read LINE
+  		do
+    			TTYUSB="$(echo ${LINE}|cut -d'/' -f3)"
+    			x-terminal-emulator -t "${TTYUSB}" -e sudo minicom -D ${LINE} -C ${BACKUP_SOURCE}${TTYUSB}.txt &
+    			sleep 5s
+  		done < /tmp/found_tty.txt
+		echo "[Done]"
+		echo
+		echo "Script complete, cleaning up..."
+		rm /tmp/found_tty.txt
+		echo "[Done]"
+else
+		echo "[Fail]"
+		echo
+		ls -A1B /dev/ttyUSB*	
+		echo 
+		echo "Connect the G&D device with the USB to mini USB service cable before starting the script"
+		echo
+		echo "Script failed, cleaning up..."
+		rm /tmp/found_tty.txt
+fi
 echo
 echo "Tom Valk"
 echo "Guntermann & Drunck GmbH"
