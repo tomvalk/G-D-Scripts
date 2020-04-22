@@ -48,8 +48,9 @@ sudo pkill -9 minicom
 fi
 
 #If there are already log files in the folder, start backup...
-  if [ -e ${BACKUP_SOURCE}/ttyUSB0.txt ]
-        then
+ls -1 ${BACKUP_SOURCE}/* > /dev/null 2>&1
+  if [ "$?" = "0" ]
+  		then
                 echo "Backing up old log files..."
                         tar cvPzf ${BACKUP_DEST}/${FILENAME} ${BACKUP_SOURCE}
                         rm  ${BACKUP_SOURCE}/*.txt
