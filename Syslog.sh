@@ -15,8 +15,13 @@
 #
 # crontab -e
 #
-# @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && sudo sh *PATH*/Syslog.sh
-# @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && sudo sh *PATH*/Syslog.sh
+# @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
+# @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
+#
+# "export DISPLAY=:0.0" to start a real terminal with minicom from crontab
+# "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations for minicom to run properly
+# "sleep 10" needed in some installations for initialise all USB ports
+#
 #
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
