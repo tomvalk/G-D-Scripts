@@ -25,9 +25,17 @@
 
 # Check if you're root
 if [ `whoami` != root ]
-  then 
-  echo "Please run the Syslog.sh script as root or using sudo!"
-  exit
+	then 
+	echo "Please run the Syslog.sh script as root or using sudo!"
+	exit
+fi
+
+# Check minicom is installed
+command -v minicom >/dev/null 2>&1
+if [ $? -ne 0 ]
+	then
+	echo "Minicom is not installed" 
+	exit
 fi
 
 # Globa path
