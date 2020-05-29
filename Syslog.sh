@@ -28,6 +28,17 @@
 #
 # Version: v5
 
+# Globa path
+BACKUP_SOURCE="./Syslog/Logs/"
+BACKUP_DEST="./Syslog/Backup/"
+
+# Filename for the Backup
+FILENAME="Backup_$(date '+%F_%H.%M.%S').tgz"
+
+echo
+echo "Starting script..."
+echo
+
 # Check if you're root
 if [ `whoami` != root ]
 	then 
@@ -42,17 +53,6 @@ if [ $? -ne 0 ]
 	echo "Minicom is not installed" 
 	exit
 fi
-
-# Globa path
-BACKUP_SOURCE="./Syslog/Logs/"
-BACKUP_DEST="./Syslog/Backup/"
-
-# Filename for the Backup
-FILENAME="Backup_$(date '+%F_%H.%M.%S').tgz"
-
-echo
-echo "Starting script..."
-echo
 
 #Kill minicom
 pkill -9 minicom
