@@ -2,7 +2,6 @@
 Shell script for logging G&D devices
 
 ## Prerequisite:
-Connect the G&D device with the USB to mini USB service cable before starting the script
 ```
 sudo apt-get install minicom
 ```
@@ -12,7 +11,7 @@ sudo apt-get install minicom
 sudo sh ./Syslog.sh 
 ```
 
-## Autostart 
+## Autostart / 24h Restart
 ```
 crontab -e
 @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
