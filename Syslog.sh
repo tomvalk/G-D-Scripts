@@ -28,7 +28,7 @@
 #
 # Version: v5
 
-# Globa path
+# Global path
 BACKUP_SOURCE="./Syslog/Logs/"
 BACKUP_DEST="./Syslog/Backup/"
 
