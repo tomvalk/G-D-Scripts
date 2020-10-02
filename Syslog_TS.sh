@@ -20,8 +20,8 @@
 # @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 # @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 #
-# "export DISPLAY=:0.0" to start a real terminal with minicom from crontab
-# "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations for minicom to run properly
+# "export DISPLAY=:0.0" to start a real terminal from crontab
+# "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations to run properly
 # "sleep 10" needed in some installations for initialise all USB ports
 #
 #
@@ -56,7 +56,7 @@ if [ $? -ne 0 ]
 	exit
 fi
 
-#Kill minicom
+#Kill grabserial
 pkill -9 grabserial
 
 #Check if the folders are created:
@@ -92,7 +92,7 @@ if [ -s /tmp/found_tty.txt ]
 		echo
 		echo "Start logging via grabserial..."
 
-		#Start minicom for each ttyUSB
+		#Start grabserial for each ttyUSB
   		while read LINE
   		do
     			TTYUSB="$(echo ${LINE}|cut -d'/' -f3)"
