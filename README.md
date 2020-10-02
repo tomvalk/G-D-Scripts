@@ -17,6 +17,8 @@ sudo sh ./Syslog.sh
 ```
 
 ## Autostart / 24h Restart
+Important to set *USER* and *PATH* !
+
 ### Syslog.sh
 ```
 crontab -e
@@ -31,7 +33,7 @@ crontab -e
 ```
 ### Info
 > "export DISPLAY=:0.0" to start a real terminal from crontab </br>
-> "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations for minicom to run properly </br>
+> "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations to run properly </br>
 > "sleep 10" needed in some installations for initialise all USB ports </br>
 
 
