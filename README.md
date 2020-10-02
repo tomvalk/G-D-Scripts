@@ -2,11 +2,11 @@
 Shell script for logging G&D devices
 
 ## Prerequisite:
-# Syslog.sh
+### Syslog.sh
 ```
 sudo apt-get install minicom
 ```
-# Syslog_TS.sh
+### Syslog_TS.sh
 ```
 sudo apt-get install grabserial
 ```
@@ -17,19 +17,19 @@ sudo sh ./Syslog.sh
 ```
 
 ## Autostart / 24h Restart
-# Syslog.sh
+### Syslog.sh
 ```
 crontab -e
 @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 ```
-# Syslog_TS.sh
+### Syslog_TS.sh
 ```
 crontab -e
 @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog_TS.sh
 @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog_TS.sh
 ```
-# Info
+### Info
 > "export DISPLAY=:0.0" to start a real terminal with minicom from crontab </br>
 > "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations for minicom to run properly </br>
 > "sleep 10" needed in some installations for initialise all USB ports </br>
