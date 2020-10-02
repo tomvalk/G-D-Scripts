@@ -30,7 +30,7 @@ crontab -e
 @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog_TS.sh
 ```
 ### Info
-> "export DISPLAY=:0.0" to start a real terminal with minicom from crontab </br>
+> "export DISPLAY=:0.0" to start a real terminal from crontab </br>
 > "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations for minicom to run properly </br>
 > "sleep 10" needed in some installations for initialise all USB ports </br>
 
