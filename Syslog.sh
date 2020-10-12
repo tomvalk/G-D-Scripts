@@ -2,26 +2,7 @@
 #
 # Syslog.sh
 #
-# Logging G&D devices
-#
-# Prerequisite:
-# Connect the G&D device with the USB to mini USB service cable before starting the script
-# sudo apt-get install minicom
-# 
-# To start the syslog use:
-# sudo sh ./Syslog.sh 
-#
-# You can edit the Crontab to make the script executeable on startup and every 24 hours 
-#
-# crontab -e
-#
-# @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
-# @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
-#
-# "export DISPLAY=:0.0" to start a real terminal with minicom from crontab
-# "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations for minicom to run properly
-# "sleep 10" needed in some installations for initialise all USB ports
-#
+# Installation/Usage: README.md 
 #
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
