@@ -6,10 +6,13 @@ Shell script for logging G&D devices
 ```
 sudo apt-get install minicom
 ```
-### Syslog_TS.sh
+### Syslog_TS.sh (w/ time stamp)
 ```
 sudo apt-get install grabserial
 ```
+### Real-Time-Clock (RTC)
+It's recommend to use a real-time clock (RTC) like the DS3231 or similar if the script is used on a device without network connection.
+
 
 ## Usage:
 ```
