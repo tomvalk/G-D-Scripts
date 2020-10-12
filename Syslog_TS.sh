@@ -2,28 +2,7 @@
 #
 # Syslog_TS.sh
 #
-# Now with timestamp (TS) via Grabserial! 
-#
-# Logging G&D devices
-#
-# Prerequisite:
-# Connect the G&D device with the USB to mini USB service cable before starting the script
-# sudo apt-get install grabserial
-# 
-# To start the syslog use:
-# sudo sh ./Syslog.sh 
-#
-# You can edit the Crontab to make the script executeable on startup and every 24 hours 
-#
-# crontab -e
-#
-# @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
-# @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
-#
-# "export DISPLAY=:0.0" to start a real terminal from crontab
-# "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations to run properly
-# "sleep 10" needed in some installations for initialise all USB ports
-#
+# Installation: README.md 
 #
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
@@ -44,7 +23,7 @@ echo
 # Check if you're root
 if [ `whoami` != root ]
 	then 
-	echo "Please run the Syslog.sh script as root or using sudo!"
+	echo "Please run the Syslog_TS.sh script as root or using sudo!"
 	exit
 fi
 
