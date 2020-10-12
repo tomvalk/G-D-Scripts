@@ -22,7 +22,7 @@ sudo sh ./Syslog.sh
 ## Autostart / 24h Restart
 - Recommend to restart every 24h to reduce file size
 - Add the following code to ``crontab -e``
-- Important to set *USER*, *PATH* and specify Syslog.sh or Syslog_TS.sh
+- Important to set ``*USER*``, ``*PATH*`` and specify ``Syslog.sh`` or ``Syslog_TS.sh``
 ```
 @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
