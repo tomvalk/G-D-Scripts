@@ -6,7 +6,7 @@ Shell script for logging G&D devices
 ```
 sudo apt-get install minicom
 ```
-### Syslog_TS.sh (w/ time stamp)
+### Syslog_TS.sh (w/time stamp)
 ```
 sudo apt-get install grabserial
 ```
@@ -20,24 +20,20 @@ sudo sh ./Syslog.sh
 ```
 
 ## Autostart / 24h Restart
-Important to set *USER* and *PATH* !
+- Important to set *USER*, *PATH* and specify Syslog.sh or Syslog_TS.sh
+- Recommend to restart every 24h to reduce file size
 
-### Syslog.sh
+### Crontab
+- Add the following code to ``crontab -e``
 ```
-crontab -e
 @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 ```
-### Syslog_TS.sh
-```
-crontab -e
-@reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog_TS.sh
-@daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog_TS.sh
-```
+
 ### Info
-> "export DISPLAY=:0.0" to start a real terminal from crontab </br>
-> "XAUTHORITY=/home/*USER*/.Xauthority" needed in some installations to run properly </br>
-> "sleep 10" needed in some installations for initialise all USB ports </br>
+- ``export DISPLAY=:0.0`` to start a real terminal from crontab 
+- ``XAUTHORITY=/home/*USER*/.Xauthority`` needed in some installations to run properly 
+- ``sleep 10`` needed in some installations for initialise all USB ports 
 
 
 ## Contributing
@@ -49,4 +45,3 @@ Tom Valk   <br/>
 Int. Area Sales Manager  <br/>
 State-certified technical engineer and business economist <br/>
 Certified specialist trainer (BDVT)
-
