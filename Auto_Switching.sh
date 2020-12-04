@@ -10,17 +10,32 @@
 #############################################
 # Important Settings
 #############################################
+
+# Set the port where your device is connected to e.g. ttyUSB0 or ttyS0
 SERIAL_PORT="/dev/ttyUSB0"
-DELAY="1s"
-BAUDRATE="115200"
 
 # The Baudrate must fit to the MUX setting, mostly it's 115200!
+BAUDRATE="115200" 
 
-# With old devices that do not have their own RS232 port, the commands can be sent via the service port.
-# To do this, it is necessary to switch from setup mode to switch mode once.
-# - #! switch to Setup-Mode during runtime
-# - !  switch to Switch-Mode during runtime
-# or change the setting "Service RS232 Startup Mode" manually
+# Set the delay between the commands
+DELAY="1s"
+
+# With old devices that do not have their own RS232 port, it is necessary to switch from setup mode to switch mode
+SWITCHMODE="\x21"		# Setup-Mode = ! 
+SETUPMODE="\x23\x21"	# Switch-Mode = #!
+
+# Commands with HEX Values
+PORT_1="\x31\x21"	# = 1!
+PORT_2="\x32\x21"	# = 2!
+PORT_3="\x33\x21"	# = 3!
+PORT_4="\x34\x21"	# = 4!
+PORT_5="\x35\x21"	# = 5!
+PORT_6="\x36\x21"	# = 6!
+PORT_7="\x37\x21"	# = 7!
+PORT_8="\x38\x21"	# = 8!
+
+NEXT="\x3c\x21"		# = <!
+PREV="\x3e\x21"		# = >!
 
 #############################################
 # Autostart
@@ -29,22 +44,8 @@ BAUDRATE="115200"
 # @reboot export DISPLAY=:0.0 && sleep 10 && sudo sh /path/to/the/script/Auto_Switching.sh
 
 #############################################
-# HEX Values
+# Script
 #############################################
-# To send the commands via Serial you need to use the HEX value of the ASCII code.
-# \x31 = 1
-# \x32 = 2
-# ...
-# \x38 = 8
-#
-# \x3c = <
-# \x3e = >
-#
-# \x3f = ?
-# \x21 = !
-#
-# \x23 = #
-
 echo
 echo "Starting script..."
 echo
@@ -63,16 +64,16 @@ fi
 echo "[Done]"
 echo
 echo "Starting loop (exit with CTRL + C) ..."
+echo -e ${SWITCHMODE} > ${SERIAL_PORT}
 echo
 echo
   		while :
   		do
-			echo -e "\x31\x21" > ${SERIAL_PORT}
+			echo -e ${PORT_1} > ${SERIAL_PORT}
     		echo "Command send ( $(date) )"
 			sleep ${DELAY}
-			echo -e "\x32\x21" > ${SERIAL_PORT}
+			echo -e ${PORT_2} > ${SERIAL_PORT}
 			echo "Command send ( $(date) )"
-			sleep ${DELAY}
-			# Add other commands if needed, HEX values in the table above!
-  		done
+			sleep ${DELAY}  		
+		done
 echo "[Closed]"
