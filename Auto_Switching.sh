@@ -23,20 +23,20 @@ DELAY="1s"
 # Commands with HEX Values
 PORT_1='"\x31\x21"'     # = 1!
 PORT_2='"\x32\x21"'     # = 2!
-PORT_3='"\x33\x21"'       # = 3!
-PORT_4='"\x34\x21"'       # = 4!
-PORT_5='"\x35\x21"'       # = 5!
-PORT_6='"\x36\x21"'      # = 6!
-PORT_7='"\x37\x21"'      # = 7!
-PORT_8='"\x38\x21"'       # = 8!
+PORT_3='"\x33\x21"'     # = 3!
+PORT_4='"\x34\x21"'     # = 4!
+PORT_5='"\x35\x21"'     # = 5!
+PORT_6='"\x36\x21"'     # = 6!
+PORT_7='"\x37\x21"'     # = 7!
+PORT_8='"\x38\x21"'     # = 8!
 
-NEXT='"\x3c\x21"'         # = <!
-PREV='"\x3e\x21"'         # = >!
+NEXT='"\x3c\x21"'       # = <!
+PREV='"\x3e\x21"'       # = >!
 
 # With old devices that do not have their own RS232 port, 
 # it is necessary to switch from setup mode to switch mode
-SETUPMODE='"\x21"'        # Setup-Mode = !
-SWITCHMODE='"\x23\x21"'   # Switch-Mode = #!
+SETUPMODE='"\x21"'      # Setup-Mode = !
+SWITCHMODE='"\x23\x21"' # Switch-Mode = #!
 
 #############################################
 # Autostart
@@ -58,28 +58,28 @@ if [ $? = 1 ]
         then
                 echo "Could not connect to "${SERIAL_PORT} " please check the port"
                 echo "[Script Failed]"
-                echo
-                echo
                 exit
 fi
 echo "[Done]"
 echo
 echo "Starting loop (exit with CTRL + C) ..."
+# Switch from setup mode to switch mode
 echo "echo -e ${SWITCHMODE} > ${SERIAL_PORT}" | bash
 echo
 echo
                 while : # Loop until you exit the Script
                 do
                         # First command e.g. Switch to Port 1
-						echo "echo -e ${PORT_1} > ${SERIAL_PORT}" | bash
+			echo "echo -e ${PORT_1} > ${SERIAL_PORT}" | bash
                         echo "Command send ( $(date) )"
                         sleep ${DELAY}
 						
-						# Second command e.g. Switch to Port 2
+			# Second command e.g. Switch to Port 2
                         echo "echo -e ${PORT_2} > ${SERIAL_PORT}" | bash
                         echo "Command send ( $(date) )"
-                        sleep ${DELAY}
-						
-						# Add more commands if needed	
+                        sleep ${DELAY}	
+			
+			# Add more commands if needed	
                 done
+echo
 echo "[Closed]"
