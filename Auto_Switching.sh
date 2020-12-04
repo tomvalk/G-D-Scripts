@@ -30,8 +30,8 @@ PORT_2='"\x32\x21"'     # = 2!
 PORT_3='"\x33\x21"'       # = 3!
 PORT_4='"\x34\x21"'       # = 4!
 PORT_5='"\x35\x21"'       # = 5!
-PORT_6='"\x36\x21"'       # = 6!
-PORT_7='"\x37\x21"'       # = 7!
+PORT_6='"\x36\x21"'      # = 6!
+PORT_7='"\x37\x21"'      # = 7!
 PORT_8='"\x38\x21"'       # = 8!
 
 NEXT='"\x3c\x21"'         # = <!
@@ -67,13 +67,18 @@ echo "Starting loop (exit with CTRL + C) ..."
 echo "echo -e ${SWITCHMODE} > ${SERIAL_PORT}" | bash
 echo
 echo
-                while :
+                while : # Loop until you exit the Script
                 do
-                        echo "echo -e ${PORT_1} > ${SERIAL_PORT}" | bash
+                        # First command e.g. Switch to Port 1
+						echo "echo -e ${PORT_1} > ${SERIAL_PORT}" | bash
                         echo "Command send ( $(date) )"
                         sleep ${DELAY}
+						
+						# Second command e.g. Switch to Port 2
                         echo "echo -e ${PORT_2} > ${SERIAL_PORT}" | bash
                         echo "Command send ( $(date) )"
                         sleep ${DELAY}
+						
+						# Add more commands if needed	
                 done
 echo "[Closed]"
