@@ -33,12 +33,32 @@ sudo sh ./Syslog.sh
 - ``XAUTHORITY=/home/*USER*/.Xauthority`` needed in some installations to run properly 
 - ``sleep 10`` needed in some installations for initialise all USB ports 
 
+# Pi-Syslog-Script
+Shell script for switching MUX/TradeSwitch via the Serial Port
 
-## Contributing
+## Prerequisite:
+- None
+
+## Usage:
+```
+sudo sh ./Auto_Switching.sh
+```
+
+## Autostart
+- Add the following code to ``crontab -e``
+```
+@reboot export DISPLAY=:0.0 && sleep 10 && sudo sh /path/to/the/script/Auto_Switching.sh
+```
+
+## Info:
+- Currently only in the file itself...
+
+
+# Contributing
 For changes or issues, please open an issue first to discuss what you would like to change. <br/>
 
 
-## Author
+# Author
 Tom Valk   <br/>
 Int. Area Sales Manager  <br/>
 State-certified technical engineer and business economist <br/>
