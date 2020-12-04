@@ -20,10 +20,6 @@ BAUDRATE="115200"
 # Set the delay between the commands; Possible with seconds (s) or miliseconds (ms)
 DELAY="1s" 
 
-# With old devices that do not have their own RS232 port, it is necessary to switch from setup mode to switch mode
-SETUPMODE='"\x21"'        # Setup-Mode = !
-SWITCHMODE='"\x23\x21"'   # Switch-Mode = #!
-
 # Commands with HEX Values
 PORT_1='"\x31\x21"'     # = 1!
 PORT_2='"\x32\x21"'     # = 2!
@@ -36,6 +32,11 @@ PORT_8='"\x38\x21"'       # = 8!
 
 NEXT='"\x3c\x21"'         # = <!
 PREV='"\x3e\x21"'         # = >!
+
+# With old devices that do not have their own RS232 port, 
+# it is necessary to switch from setup mode to switch mode
+SETUPMODE='"\x21"'        # Setup-Mode = !
+SWITCHMODE='"\x23\x21"'   # Switch-Mode = #!
 
 #############################################
 # Autostart
