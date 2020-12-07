@@ -5,22 +5,23 @@
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
 #
-# Version: v1
+# Version: v1 (07/12/2020)
 
 #############################################
 # Important Settings
 #############################################
 
-# Set the port where your device is connected to e.g. ttyUSB0 or ttyS0
+# Set the port where your device is connected to e.g. ttyUSB0 or ttyS0 
+# on WSL the Windows COM3 port is the WSL ttyS3 port etc.
 SERIAL_PORT="/dev/ttyUSB0"
 
 # The Baudrate must fit to the MUX setting, mostly it's 115200!
 BAUDRATE="115200"
 
-# Set the delay between the commands; Possible with seconds (s) or miliseconds (0.1s)
+# Set the delay between the commands; Possible with seconds (s) or miliseconds (0.1s) etc.
 DELAY="1s" 
 
-# Commands with HEX Values
+# Commands with HEX values:
 PORT_1='"\x31\x21"'     # = 1!
 PORT_2='"\x32\x21"'     # = 2!
 PORT_3='"\x33\x21"'     # = 3!
@@ -30,6 +31,7 @@ PORT_6='"\x36\x21"'     # = 6!
 PORT_7='"\x37\x21"'     # = 7!
 PORT_8='"\x38\x21"'     # = 8!
 
+# Switching to the NEXT or PREV channel (last channel -> first channel and vice versa)
 NEXT='"\x3e\x21"'       # = <!
 PREV='"\x3c\x21"'       # = >!
 
@@ -56,30 +58,23 @@ echo "Set Baudrate to "${BAUDRATE} "..."
 stty -F ${SERIAL_PORT} ${BAUDRATE} > /dev/null 2>&1
 if [ $? = 1 ]
         then
-                echo "Could not connect to "${SERIAL_PORT} " please check the port"
+                echo "Could not connect to "${SERIAL_PORT} " please check the port!"
                 echo "[Script Failed]"
                 exit
 fi
 echo "[Done]"
 echo
 echo "Starting loop (exit with CTRL + C) ..."
-# Switch from setup mode to switch mode
+# Switch from setup mode to switch mode (optional)
 echo "echo -e ${SWITCHMODE} > ${SERIAL_PORT}" | bash
-echo
 echo
                 while : # Loop until you exit the Script
                 do
-                        # First command e.g. Switch to Port 1
-			echo "echo -e ${PORT_1} > ${SERIAL_PORT}" | bash
+                        # Switch to the next channel 
+			echo "echo -e ${NEXT} > ${SERIAL_PORT}" | bash
                         echo "Command send ( $(date) )"
-                        sleep ${DELAY}
-						
-			# Second command e.g. Switch to Port 2
-                        echo "echo -e ${PORT_2} > ${SERIAL_PORT}" | bash
-                        echo "Command send ( $(date) )"
-                        sleep ${DELAY}	
-			
-			# Add more commands if needed	
+                        sleep ${DELAY}								
+			# Add more commands to the loop if needed	
                 done
 echo
 echo "[Closed]"
