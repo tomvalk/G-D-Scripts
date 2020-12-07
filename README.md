@@ -90,6 +90,10 @@ Send Command:
 Command: echo -e "\x31\x21" > /dev/ttyUSB0
 Script: echo "echo -e ${PORT_1} > ${SERIAL_PORT}" | bash
 ```
+
+WSL
+- This script can be executet via the WSL Terminal
+- Windows ```COM3``` can be accessed in the WSL via ```/dev/ttyS3```
 -----------------------------------------------------------
 
 # Contributing
