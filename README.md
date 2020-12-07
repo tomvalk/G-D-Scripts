@@ -5,13 +5,13 @@
 ---------
 
 # Switching-Script
-- Shell script for switching MUX/TradeSwitch via the Serial Port <br/>
+- Shell script for switching G&D MUX/TradeSwitch via the Serial Port <br/>
 [![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)](https://github.com/tomvalk/Pi-G-D-Scripts/tree/master/Switching)
 
 ---------
 
 # PHP-Script
-- PHP-cURL script for sending XML code/files via the IP-Control-API <br/>
+- PHP-cURL script for sending XML code/files via the IP-Control-API to a G&D device <br/>
 [![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)](https://github.com/tomvalk/Pi-G-D-Scripts/tree/master/PHP)
 
 ---------
