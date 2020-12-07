@@ -1,4 +1,4 @@
-# Pi-Switching Script
+# Switching Script
 Shell script for switching G&D MUX/TradeSwitch via the Serial Port 
 
 ## Prerequisite:
