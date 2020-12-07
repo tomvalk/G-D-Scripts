@@ -19,6 +19,8 @@ php -f curl_api_test.php
 
 - Important Settings:
 ```
- curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); //Must be FALSE to receive a response!
+ curl_setopt($ch, CURLOPT_TIMEOUT, 1); //Must be set to 1 to avoid infinite loop!
+ curl_setopt($ch, CURLOPT_VERBOSE, false); //Optional, set to treu to provide additional details!
  curl_setopt($ch, CURLOPT_HTTP09_ALLOWED, 1); //Must be set to 1 to avoid HTTP/0.9 issues!
+ curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); //Must be FALSE to receive a response!
  ```
