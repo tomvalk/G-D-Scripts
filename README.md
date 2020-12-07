@@ -28,9 +28,8 @@ sudo sh ./Syslog.sh
 @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 ```
 
-### Info
 - ``export DISPLAY=:0.0`` to start a real terminal from crontab 
-- ``XAUTHORITY=/home/*USER*/.Xauthority`` needed in some installations to run properly 
+- ``XAUTHORITY=/home/*USER*/.Xauthority`` needed in some Minicom installations to run properly 
 - ``sleep 10`` needed in some installations for initialise all USB ports 
 
 -----------------------------------------------------------
@@ -53,6 +52,8 @@ sudo sh ./Auto_Switching.sh
 ```
 @reboot export DISPLAY=:0.0 && sleep 10 && sudo sh /path/to/the/script/Auto_Switching.sh
 ```
+- ``export DISPLAY=:0.0`` to start a real terminal from crontab 
+- ``sleep 10`` needed in some installations for initialise all USB ports 
 
 ## Info:
 HEX values:
