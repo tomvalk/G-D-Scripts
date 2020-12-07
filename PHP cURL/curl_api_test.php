@@ -11,7 +11,8 @@
  $ch = curl_init();
  
  curl_setopt($ch, CURLOPT_URL, $url);
- curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); //IMPORTANT!!!
+ curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); //IMPORTANT, must be FALSE!!!
+ curl_setopt($ch, CURLOPT_HTTP09_ALLOWED, 1); //IMPORTANT, must be 1!!!
  curl_setopt($ch, CURLOPT_TIMEOUT, 1);
  curl_setopt($ch, CURLOPT_POST, true);
  curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
