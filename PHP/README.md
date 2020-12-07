@@ -4,7 +4,7 @@ PHP-cURL script for sending XML code/files via the IP-Control-API
 ## Prerequisite:
 ```
 cURL: sudo apt-get install curl 
-PHP: sudo apt-get install php php-curl nghttp2 
+PHP:  sudo apt-get install php php-curl nghttp2 
 ```
 
 ## Usage cURL:
