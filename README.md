@@ -70,8 +70,8 @@ PORT_6='"\x36\x21"'     # = 6!
 PORT_7='"\x37\x21"'     # = 7!
 PORT_8='"\x38\x21"'     # = 8!
 
-NEXT='"\x3c\x21"'         # = <!
-PREV='"\x3e\x21"'         # = >!
+NEXT='"\x3e\x21"'         # = <!
+PREV='"\x3c\x21"'         # = >!
 
 # With old devices that do not have their own RS232 port,
 # it is necessary to switch from setup mode to switch mode
