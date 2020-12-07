@@ -9,15 +9,15 @@
  );
  
  $ch = curl_init();
- 
  curl_setopt($ch, CURLOPT_URL, $url);
- curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); //IMPORTANT, must be FALSE!!!
- curl_setopt($ch, CURLOPT_HTTP09_ALLOWED, 1); //IMPORTANT, must be 1!!!
- curl_setopt($ch, CURLOPT_TIMEOUT, 1);
  curl_setopt($ch, CURLOPT_POST, true);
  curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
- curl_setopt($ch, CURLOPT_VERBOSE, true);
+ curl_setopt($ch, CURLOPT_TIMEOUT, 1); //Must be set to 1 to avoid infinite loop!
+ curl_setopt($ch, CURLOPT_VERBOSE, false); //Optional, set to treu to provide additional details!
+ curl_setopt($ch, CURLOPT_HTTP09_ALLOWED, 1); //Must be set to 1 to avoid HTTP/0.9 issues!
+ curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); //Must be FALSE to receive a response!
+
  $data = curl_exec($ch);
  
  error_log(print_r($data, TRUE));
