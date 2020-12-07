@@ -1,5 +1,5 @@
 # PHP-cURL-Scripts
-PHP-cURL script for sending XML code/files via the IP-Control-API 
+PHP-cURL script for sending XML code/files via the IP-Control-API to a G&D device 
 
 ## Prerequisite:
 ```
