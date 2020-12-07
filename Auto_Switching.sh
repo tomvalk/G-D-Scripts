@@ -17,7 +17,7 @@ SERIAL_PORT="/dev/ttyUSB0"
 # The Baudrate must fit to the MUX setting, mostly it's 115200!
 BAUDRATE="115200"
 
-# Set the delay between the commands; Possible with seconds (s) or miliseconds (ms)
+# Set the delay between the commands; Possible with seconds (s) or miliseconds (0.1s)
 DELAY="1s" 
 
 # Commands with HEX Values
