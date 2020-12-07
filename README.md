@@ -17,12 +17,13 @@ It's recommend to use a real-time clock (RTC) like the DS3231 or similar if the 
 ## Usage:
 ```
 sudo sh ./Syslog.sh 
+sudo sh ./Syslog_TS.sh 
 ```
 
 ## Autostart / 24h Restart
 - Recommend to restart every 24h to reduce file size
 - Add the following code to ``crontab -e``
-- Important to set ``*USER*``, ``*PATH*`` and specify ``Syslog.sh`` or ``Syslog_TS.sh``
+- Important to change ``*USER*``, ``*PATH*`` and specify ``Syslog.sh`` or ``Syslog_TS.sh``
 ```
 @reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
 @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
@@ -49,8 +50,9 @@ sudo sh ./Auto_Switching.sh
 
 ## Autostart
 - Add the following code to ``crontab -e``
+- Important to change the ``*PATH*``
 ```
-@reboot export DISPLAY=:0.0 && sleep 10 && sudo sh /path/to/the/script/Auto_Switching.sh
+@reboot export DISPLAY=:0.0 && sleep 10 && sudo sh *PATH*/Auto_Switching.sh
 ```
 - ``export DISPLAY=:0.0`` to start a real terminal from crontab 
 - ``sleep 10`` needed in some installations for initialise all USB ports 
