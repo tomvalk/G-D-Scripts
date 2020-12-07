@@ -11,7 +11,7 @@
 ---------
 
 # PHP-Script
-- PHP-cURL script for sending XML code/files via the IP-Control-API
+- PHP-cURL script for sending XML code/files via the IP-Control-API <br/>
 [![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)](https://github.com/tomvalk/Pi-G-D-Scripts/tree/master/PHP)
 
 ---------
