@@ -1,4 +1,4 @@
-# Pi-Syslog-Script
+# Syslog-Script
 Shell script for logging G&D devices
 
 ## Prerequisite:
