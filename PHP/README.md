@@ -19,9 +19,9 @@ curl 192.168.0.1:27994 --data "<root><list><MatrixConnectionList /></list></root
 
 ### Command Settings:
 ```
---data <data> HTTP POST data; Use @./file.xml or text "<root>XML-Command</root>"
---http0.9 Allow HTTP 0.9 responses  
---max-time <seconds> Maximum time allowed for the transfer
+--data <data>         HTTP POST data; Use @./file.xml or text "<root>XML-Command</root>"
+--http0.9             Allow HTTP 0.9 responses  
+--max-time <sec>      Maximum time allowed for the transfer
 ```
 
 
@@ -43,8 +43,9 @@ php -f curl_api_test.php
 
 ### Important File Settings:
 ```
- curl_setopt($ch, CURLOPT_TIMEOUT, 1); //Must be set to 1 to avoid infinite loop!
- curl_setopt($ch, CURLOPT_VERBOSE, false); //Optional, set to treu to provide additional details!
- curl_setopt($ch, CURLOPT_HTTP09_ALLOWED, 1); //Must be set to 1 to avoid HTTP/0.9 issues!
- curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); //Must be FALSE to receive a response!
+ curl_setopt($ch, CURLOPT_TIMEOUT, 1);            //Must be set to 1 to avoid infinite loop!
+ curl_setopt($ch, CURLOPT_HTTP09_ALLOWED, 1);     //Must be set to 1 to avoid HTTP/0.9 issues!
+ curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); //Must be set to FALSE to receive a response!
+ 
+ curl_setopt($ch, CURLOPT_VERBOSE, false);        //Optional, set to true to provide additional details!
  ```
