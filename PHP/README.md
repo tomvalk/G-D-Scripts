@@ -9,7 +9,7 @@ PHP:  sudo apt-get install php php-curl nghttp2
 
 ## Usage cURL:
 ```
-curl -X POST -d @./curl_test.xml 192.168.0.1:27994
+curl -X POST -d @./xml_test.xml 192.168.0.1:27994
 ```
 
 ## Usage PHP:
