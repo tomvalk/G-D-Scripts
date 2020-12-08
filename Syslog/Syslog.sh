@@ -1,17 +1,15 @@
 #!/bin/sh
 #
-# Syslog_TS.sh
-#
-# Installation: README.md 
+# Syslog.sh
 #
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
 #
-# Version: v5
+# Version: v1
 
 # Global path
-BACKUP_SOURCE="./Syslog/Logs/"
-BACKUP_DEST="./Syslog/Backup/"
+BACKUP_SOURCE="$HOME/Syslog/Logs/"
+BACKUP_DEST="$HOME/Syslog/Backup/"
 
 # Filename for the Backup
 FILENAME="Backup_$(date '+%F_%H.%M.%S').tgz"
@@ -23,7 +21,7 @@ echo
 # Check if you're root
 if [ `whoami` != root ]
 	then 
-	echo "Please run the Syslog_TS.sh script as root or using sudo!"
+	echo "Please run the Syslog.sh script as root or using sudo!"
 	exit
 fi
 
@@ -96,6 +94,12 @@ fi
 chmod -R 0777 ./Syslog/	
 rm /tmp/found_tty.txt
 echo "[Done]"
+echo
+echo
+echo "File location:"
+echo "$HOME/Syslog/Backup/"
+echo "$HOME/Syslog/Logs/"
+echo
 echo
 echo "Tom Valk"
 echo "Guntermann & Drunck GmbH"
