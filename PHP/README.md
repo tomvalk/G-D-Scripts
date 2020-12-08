@@ -1,15 +1,15 @@
-# PHP-cURL-Scripts
-PHP-cURL script for sending XML code/files via the IP-Control-API to a G&D device 
+# PHP-CURL-Scripts
+PHP and CURL script for sending XML code/files via the IP-Control-API to a G&D device 
 
 ## Prerequisite:
 ```
-cURL: sudo apt-get install curl 
-PHP:  sudo apt-get install php php-curl nghttp2 
+CURL: sudo apt-get install curl 
+PHP:  sudo apt-get install php php-curl 
 ```
 
 ## Usage cURL:
 ```
-curl -X POST -d @./xml_test.xml 192.168.0.1:27994
+curl -X POST -d @./xml_test.xml 192.168.0.1:27994 --http0.9
 ```
 
 ## Usage PHP:
