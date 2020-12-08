@@ -13,7 +13,7 @@ Windows ```COM3``` can be accessed in the WSL via ```/dev/ttyS3```
 
 ### Send a command:
 ```
-echo -e "\x31\x21" > /dev/ttyUSB0
+echo -e '"\x31\x21"' > /dev/ttyUSB0
 ```
 
 ### Send a command via a Shell script:
