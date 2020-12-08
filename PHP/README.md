@@ -7,9 +7,21 @@ CURL: sudo apt-get install curl
 PHP:  sudo apt-get install php php-curl 
 ```
 
-## Usage cURL:
+## Usage CURL with file:
 ```
-curl -X POST -d @./xml_test.xml 192.168.0.1:27994 --http0.9
+curl 192.168.0.1:27994 --data @./xml_test.xml --http0.9 --max-time 1
+```
+
+## Usage CURL with direct commands:
+```
+curl 192.168.0.1:27994 --data "<root><list><MatrixConnectionList /></list></root>" --http0.9 --max-time 1
+```
+
+- Important Settings:
+```
+--data <data> HTTP POST data; Use @./file.xml or text "<root>XML-Command</root>"
+--http0.9 Allow HTTP 0.9 responses  
+--max-time <seconds> Maximum time allowed for the transfer
 ```
 
 ## Usage PHP:
