@@ -1,14 +1,12 @@
-# Syslog-Script
+# Content
+
+## Syslog-Script
 - Shell script for logging G&D devices <br/>
 
----------
-
-# Switching-Script
+## Switching-Script
 - Shell script for switching G&D MUX/TradeSwitch via the Serial Port <br/>
 
----------
-
-# PHP/CURL-Script
+## PHP/CURL-Script
 - PHP and CURL script for sending XML code/files via the IP-Control-API to a G&D device <br/>
 
 ---------
