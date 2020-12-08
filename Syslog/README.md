@@ -27,7 +27,7 @@ sudo sh ./Syslog.sh
 - ``XAUTHORITY=/home/*USER*/.Xauthority`` needed in some applications to run properly 
 - ``sleep 10`` needed in some installations for initialise all USB ports 
 
-#### Alternativ with Minicom Syslog_Minicom.sh
+#### Alternativ with Minicom
 ```
 sudo apt-get install minicom
 ```
