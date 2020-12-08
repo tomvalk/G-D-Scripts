@@ -28,7 +28,7 @@ curl 192.168.0.1:27994 --data "<root><list><MatrixConnectionList /></list></root
 ## PHP-Script
 ### Prerequisite:
 ```
-sudo apt-get install php php-curl 
+sudo apt-get install php-curl 
 ```
 
 ### Usage PHP:
