@@ -19,8 +19,8 @@ sudo sh ./Syslog.sh
 - Add the following code to ``crontab -e``
 - Important to change ``*USER*`` and ``*PATH*`` 
 ```
-@reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
-@daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && cd *PATH* && sudo sh ./Syslog.sh
+@reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && sudo sh *PATH*/Syslog.sh
+@daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && sudo sh *PATH*/Syslog.sh
 ```
 
 - ``export DISPLAY=:0.0`` to start a real terminal from crontab 
@@ -30,5 +30,5 @@ sudo sh ./Syslog.sh
 #### Alternativ with Minicom Syslog_Minicom.sh
 ```
 sudo apt-get install minicom
-sudo sh ./Syslog_Minicom.sh 
 ```
+Change the following variable in Syslog.sh to ``APP="minicom" ``
