@@ -1,25 +1,27 @@
 # Switching Script
 Shell script for switching G&D MUX/TradeSwitch via the Serial Port 
 
-## Prerequisite:
-- None
+## General Switching:
 
-## Usage:
+### Change/Set Baudrate:
 ```
-sudo sh ./Auto_Switching.sh
+stty -F /dev/ttyUSB0 115200
 ```
 
-## Autostart
-- Add the following code to ``crontab -e``
-- Important to change the ``*PATH*``
-```
-@reboot export DISPLAY=:0.0 && sleep 10 && sudo sh *PATH*/Auto_Switching.sh
-```
-- ``export DISPLAY=:0.0`` to start a real terminal from crontab 
-- ``sleep 10`` needed in some installations for initialise all USB ports 
+### Access the device via WSL
+Windows ```COM3``` can be accessed in the WSL via ```/dev/ttyS3```
 
-## Info:
-HEX values:
+### Send a command:
+```
+echo -e "\x31\x21" > /dev/ttyUSB0
+```
+
+### Send a command via a Shell script:
+```
+echo "echo -e "\x31\x21" > /dev/ttyUSB0" | bash
+```
+
+### HEX values:
 ```
 # Commands with HEX Values
 PORT_1='"\x31\x21"'     # = 1!
@@ -40,18 +42,24 @@ SETUPMODE='"\x21"'        # Setup-Mode = !
 SWITCHMODE='"\x23\x21"'   # Switch-Mode = #!
 ```
 
-Change Baudrate:
+-------------
+
+## Script for Automatic Switching (Testing):
+
+### Prerequisite:
+- None
+
+### Usage
 ```
-Command:  stty -F /dev/ttyUSB0 115200
-Script:   stty -F ${SERIAL_PORT} ${BAUDRATE} > /dev/null 2>&1
+sudo sh ./Auto_Switching.sh
 ```
 
-Send Command:
+### Autostart
+- Add the following code to ``crontab -e``
+- Important to change the ``*PATH*``
 ```
-Command: echo -e "\x31\x21" > /dev/ttyUSB0
-Script: echo "echo -e ${PORT_1} > ${SERIAL_PORT}" | bash
+@reboot export DISPLAY=:0.0 && sleep 10 && sudo sh *PATH*/Auto_Switching.sh
 ```
+- ``export DISPLAY=:0.0`` to start a real terminal from crontab 
+- ``sleep 10`` needed in some installations for initialise all USB ports 
 
-WSL
-- This script can be executet via the WSL Terminal
-- Windows ```COM3``` can be accessed in the WSL via ```/dev/ttyS3```
