@@ -12,8 +12,8 @@ APP="grabserial"
 
 # Global path
 MY_PATH="`dirname \"$0\"`"
-BACKUP_SOURCE="$MY_PATH/Syslog/Logs/"
-BACKUP_DEST="$MY_PATH/Syslog/Backup/"
+BACKUP_SOURCE="$MY_PATH/Logs/"
+BACKUP_DEST="$MY_PATH/Backup/"
 
 # Filename for the Backup
 FILENAME="Backup_$(date '+%F_%H.%M.%S').tgz"
@@ -99,7 +99,6 @@ else
 		echo "[Fail]"
 		echo
 		ls -A1B /dev/ttyUSB*
-		echo 
 		echo "Connect the G&D device with the USB to mini USB service cable before starting the script"
 		echo
 		echo "Script failed, cleaning up..."
