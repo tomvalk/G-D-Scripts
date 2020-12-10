@@ -12,7 +12,7 @@
 #############################################
 
 # Select the serial application, use 'grabserial' or 'minicom'
-APP="grabserial" 
+APP="grabserial"
 
 # Select ttyUSB* for all USB ports or ttyS* for all serial connections
 PORT="/dev/ttyUSB*"
@@ -81,12 +81,12 @@ if [ "$?" = "0" ]
                 echo "[Done]"
 		echo
   fi
-#determine all ttyUSB connections
+#determine all tty connections
 echo "Searching for $PORT..."
 ls -A1B $PORT > /tmp/found_tty.txt 2> /dev/null
 if [ -s /tmp/found_tty.txt ]
 	then
-		ls -A1B $PORT 
+		ls -A1B $PORT
 		echo "[Done]"
 		echo
 		echo "Start logging via $APP..."
@@ -104,19 +104,17 @@ if [ -s /tmp/found_tty.txt ]
 		echo "[Done]"
 		echo
 		echo "File location:"
-		echo "Logs: 	$BACKUP_SOURCE"
-		echo "Backup: 	$BACKUP_DEST"
-		echo
-		echo
-		echo "Script complete, cleaning up..."
+		echo "Logs: $BACKUP_SOURCE"
+		echo "Backup: $BACKUP_DEST"
 else
 		echo "[Fail]"
 		echo
 		ls -A1B $PORT 
 		echo "Connect the G&D device with the USB to mini USB service cable before starting the script"
-		echo
-		echo "Script failed, cleaning up..."
 fi
+echo
+echo
+echo "Cleaning up..."
 chmod -R 0777 $BACKUP_SOURCE $BACKUP_DEST	
 rm /tmp/found_tty.txt
 echo "[Closed]"
