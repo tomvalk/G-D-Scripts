@@ -41,12 +41,6 @@ SETUPMODE='"\x21"'      # Setup-Mode = !
 SWITCHMODE='"\x23\x21"' # Switch-Mode = #!
 
 #############################################
-# Autostart
-#############################################
-# Add the following code to crontab -e
-# @reboot export DISPLAY=:0.0 && sleep 10 && sudo sh /path/to/the/script/Auto_Switching.sh
-
-#############################################
 # Script
 #############################################
 echo
