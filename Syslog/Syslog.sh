@@ -7,16 +7,30 @@
 #
 # Version: v1
 
-# Terminal Application, use 'grabserial' or 'minicom'
-APP="grabserial"
+#############################################
+# Important Settings
+#############################################
 
-# Global path
+# Select the serial application, use 'grabserial' or 'minicom'
+APP="grabserial" 
+
+# Select ttyUSB* for all USB ports or ttyS* for all serial connections
+PORT="/dev/ttyUSB*"
+
+# Set the Baudrate
+BAUDRATE="115200"
+
+# Set the path to Log/Backup folder
 MY_PATH="`dirname \"$0\"`"
 BACKUP_SOURCE="$MY_PATH/Logs/"
 BACKUP_DEST="$MY_PATH/Backup/"
 
-# Filename for the Backup
+# Set the backup name
 FILENAME="Backup_$(date '+%F_%H.%M.%S').tgz"
+
+#############################################
+# Script
+#############################################
 
 echo
 echo "Starting script!"
@@ -68,22 +82,22 @@ if [ "$?" = "0" ]
 		echo
   fi
 #determine all ttyUSB connections
-echo "Searching for ttyUSB..."
-ls -A1B /dev/ttyUSB* > /tmp/found_tty.txt 2> /dev/null
+echo "Searching for $PORT..."
+ls -A1B $PORT > /tmp/found_tty.txt 2> /dev/null
 if [ -s /tmp/found_tty.txt ]
 	then
-		ls -A1B /dev/ttyUSB*
+		ls -A1B $PORT 
 		echo "[Done]"
 		echo
 		echo "Start logging via $APP..."
 		#Start grabserial for each ttyUSB
   		while read LINE
   		do
-    			TTYUSB="$(echo ${LINE}|cut -d'/' -f3)"
+    			TTYPORT="$(echo ${LINE}|cut -d'/' -f3)"
 				if [ $APP = "grabserial" ]; then
-					x-terminal-emulator -t "${TTYUSB}" -e sudo grabserial -T -d ${LINE} -o ${BACKUP_SOURCE}${TTYUSB}.txt &
+					x-terminal-emulator -t "${TTYPORT}" -e sudo grabserial -T -b ${BAUDRATE} -d ${LINE} -o ${BACKUP_SOURCE}${TTYPORT}.txt &
 				elif [ $APP = "minicom" ]; then
-					x-terminal-emulator -t "${TTYUSB}" -e sudo minicom -D ${LINE} -C ${BACKUP_SOURCE}${TTYUSB}.txt &
+					x-terminal-emulator -t "${TTYPORT}" -e sudo minicom -b ${BAUDRATE} -D ${LINE} -C ${BACKUP_SOURCE}${TTYPORT}.txt &
 				fi
     			sleep 5s
   		done < /tmp/found_tty.txt
@@ -98,7 +112,7 @@ if [ -s /tmp/found_tty.txt ]
 else
 		echo "[Fail]"
 		echo
-		ls -A1B /dev/ttyUSB*
+		ls -A1B $PORT 
 		echo "Connect the G&D device with the USB to mini USB service cable before starting the script"
 		echo
 		echo "Script failed, cleaning up..."
