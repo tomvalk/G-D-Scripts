@@ -38,8 +38,8 @@ PREV='"\x3c\x21"'         # = >!
 
 # With old devices that do not have their own RS232 port,
 # it is necessary to switch from setup mode to switch mode
-SETUPMODE='"\x21"'        # Setup-Mode = !
-SWITCHMODE='"\x23\x21"'   # Switch-Mode = #!
+SWITCHMODE='"\x21"'        # Switch-Mode = !
+SETUPMODE='"\x23\x21"'     # Setup-Mode = #!
 ```
 
 -------------
