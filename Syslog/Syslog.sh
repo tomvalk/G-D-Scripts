@@ -3,7 +3,8 @@
 # Syslog.sh
 #
 # Author: Tom Valk
-# Guntermann & Drunck GmbH
+#
+# Usage: sudo bash Syslog.sh
 #
 
 #############################################
@@ -116,9 +117,8 @@ echo
 echo "Cleaning up..."
 chmod -R 0777 $BACKUP_SOURCE $BACKUP_DEST	
 rm /tmp/found_tty.txt
-echo "[Closed]"
+echo "[Script Closed]"
 echo
 echo "Tom Valk"
-echo "Guntermann & Drunck GmbH"
 echo
 echo
