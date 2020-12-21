@@ -5,7 +5,6 @@
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
 #
-# Version: v1 (07/12/2020)
 
 #############################################
 # Important Settings
@@ -58,17 +57,22 @@ if [ $? = 1 ]
 fi
 echo "[Done]"
 echo
-echo "Starting loop (exit with CTRL + C) ..."
+# Show response from the serial interface
+pkill -9 cat
+cat ${SERIAL_PORT}
 # Switch from setup mode to switch mode (optional)
-echo "echo -e ${SWITCHMODE} > ${SERIAL_PORT}" | bash
+echo "echo -e -n ${SWITCHMODE} > ${SERIAL_PORT}" | bash
+echo
+echo "Starting loop (exit with CTRL + C) ..."
 echo
                 while : # Loop until you exit the Script
                 do
                         # Switch to the next channel
-			echo "echo -e ${NEXT} > ${SERIAL_PORT}" | bash
-                        echo "Command send ( $(date) )"
-                        sleep ${DELAY}			
+			echo "echo -e -n ${NEXT} > ${SERIAL_PORT}" | bash
+                        echo "Command send ($(date)) response: "
+                        sleep ${DELAY}
 			# Add more commands to the loop if needed
                 done
 echo
+pkill -9 cat
 echo "[Closed]"
