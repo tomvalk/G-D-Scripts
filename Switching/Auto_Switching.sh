@@ -18,8 +18,8 @@ SERIAL_PORT="/dev/ttyUSB0"
 # The Baudrate must fit to the MUX setting, mostly it's 115200!
 BAUDRATE="115200"
 
-# Set the delay between the commands; Possible with seconds (s) or miliseconds (0.1s) etc.
-DELAY="1s"
+# Set the delay between the commands; Possible with seconds (1) or miliseconds (0.1) etc.
+DELAY="1"
 
 # Commands with HEX values:
 PORT_1='"\x31\x21"'     # = 1!
@@ -62,29 +62,29 @@ pkill -9 cat
 cat ${SERIAL_PORT} &
 # Switch from setup mode to switch mode (optional)
 echo "Enable switch mode"
-echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash 
+echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash
 echo
-echo "Starting loop (exit with q) ..."
+echo "Starting loop (press Q to exit) ..."
 COUNTER=0
 echo
-		# Loop until you exit the Script
-                while : 
+                # Loop until you exit the Script
+                while :
                 do
                         # Switch to the next channel
-			COUNTER=$((COUNTER+1))
-			echo "echo -e -n ${NEXT_CH} > ${SERIAL_PORT}" | bash
-                        echo -n "Command #$COUNTER send ($(date)) response: "                      
-			#
-                        # Add more commands to the loop if needed
-                        #
-			# Break the loop with q or Q
-                        read -t 0.1 -N 1 INPUT
+                        COUNTER=$((COUNTER+1))
+                        echo "Counter: $COUNTER (press Q to exit)"
+			
+			# Add more commands to the loop if needed
+                        echo "echo -e -n ${NEXT_CH} > ${SERIAL_PORT}" | bash
+			echo -n "Response ($(date)): "
+                        
+                        # Break the loop with q or Q
+                        read -t ${DELAY} -N 1 INPUT
                         if [[ $INPUT = "q" ]] || [[ $INPUT = "Q" ]]; then
-                                break                                                                                                           
-			fi		
-                        # Loop   
-			sleep ${DELAY}
+                                break
+			fi
                 done
+echo
 echo
 pkill -9 cat
 echo
