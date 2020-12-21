@@ -58,7 +58,7 @@ sudo bash ./Auto_Switching.sh
 - Add the following code to ``crontab -e``
 - Important to change the ``*PATH*``
 ```
-@reboot export DISPLAY=:0.0 && sleep 10 && sudo sh *PATH*/Auto_Switching.sh
+@reboot export DISPLAY=:0.0 && sleep 10 && sudo bash *PATH*/Auto_Switching.sh
 ```
 - ``export DISPLAY=:0.0`` to start a real terminal from crontab 
 - ``sleep 10`` needed in some installations for initialise all USB ports 
