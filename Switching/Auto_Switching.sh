@@ -72,11 +72,11 @@ echo
                 do
                         # Switch to the next channel
                         COUNTER=$((COUNTER+1))
-                        echo "#$COUNTER ($(date)) - (press Q to exit)"
+                        echo "Counter: $COUNTER - press Q to exit"
 			
 			# Add more commands to the loop if needed
                         echo "echo -e -n ${NEXT_CH} > ${SERIAL_PORT}" | bash
-			echo -n "Response: "
+			echo -n "Command send ($(date)) response: "
                         
                         # Break the loop with q or Q
                         read -t ${DELAY} -N 1 INPUT
