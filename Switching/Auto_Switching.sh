@@ -65,21 +65,23 @@ echo "Enable switch mode"
 echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash 
 echo
 echo "Starting loop (exit with q) ..."
+COUNTER=0
 echo
 		# Loop until you exit the Script
                 while : 
                 do
                         # Switch to the next channel
+			COUNTER=$((COUNTER+1))
 			echo "echo -e -n ${NEXT_CH} > ${SERIAL_PORT}" | bash
-                        echo -n "Command send ($(date)) response: "                      
+                        echo -n "Command #$COUNTER send ($(date)) response: "                      
 			#
                         # Add more commands to the loop if needed
                         #
-                        # Break the loop with q or Q
+			# Break the loop with q or Q
                         read -t 0.1 -N 1 INPUT
                         if [[ $INPUT = "q" ]] || [[ $INPUT = "Q" ]]; then
                                 break                                                                                                           
-			fi
+			fi		
                         # Loop   
 			sleep ${DELAY}
                 done
