@@ -3,7 +3,6 @@
 # Auto_Switching.sh
 #
 # Author: Tom Valk
-# Guntermann & Drunck GmbH
 #
 # Usage: sudo bash Auto_Switching.sh
 #
@@ -86,8 +85,9 @@ echo
                 done
 echo
 pkill -9 cat
+echo
+echo
 echo "[Script Closed]"
 echo
 echo "Tom Valk"
-echo "Guntermann & Drunck GmbH"
 echo
