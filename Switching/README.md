@@ -5,7 +5,7 @@ Shell script for switching G&D MUX/TradeSwitch via the Serial Port
 
 ### Change/Set Baudrate:
 ```
-stty -F /dev/ttyUSB0 115200
+stty -F /dev/ttyUSB0 115200 cs8 -cstopb -parenb -ixon
 ```
 
 ### Access the device via WSL
