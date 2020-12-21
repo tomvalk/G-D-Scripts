@@ -59,7 +59,7 @@ echo "[Done]"
 echo
 # Show response from the serial interface
 pkill -9 cat
-cat ${SERIAL_PORT}
+cat ${SERIAL_PORT} &
 # Switch from setup mode to switch mode (optional)
 echo "echo -e -n ${SWITCHMODE} > ${SERIAL_PORT}" | bash
 echo
