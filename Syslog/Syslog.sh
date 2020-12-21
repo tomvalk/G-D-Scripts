@@ -5,7 +5,6 @@
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
 #
-# Version: v1
 
 #############################################
 # Important Settings
