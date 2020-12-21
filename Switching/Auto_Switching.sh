@@ -56,13 +56,13 @@ if [ $? = 1 ]
                 echo "[Script Failed]"
                 exit
 fi
+# Switch from setup mode to switch mode (optional)
+echo "Enable switch mode"
+echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash
 # Show response from the serial interface
 echo "Enable response from serial interface"
 pkill -9 cat
 cat ${SERIAL_PORT} &
-# Switch from setup mode to switch mode (optional)
-echo "Enable switch mode"
-echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash
 echo
 echo "Starting loop (press Q to exit) ..."
 COUNTER=0
@@ -72,11 +72,11 @@ echo
                 do
                         # Switch to the next channel
                         COUNTER=$((COUNTER+1))
-                        echo "Counter: $COUNTER (press Q to exit)"
+                        echo "#$COUNTER ($(date)) - (press Q to exit)"
 			
 			# Add more commands to the loop if needed
                         echo "echo -e -n ${NEXT_CH} > ${SERIAL_PORT}" | bash
-			echo -n "Response ($(date)): "
+			echo -n "Response: "
                         
                         # Break the loop with q or Q
                         read -t ${DELAY} -N 1 INPUT
