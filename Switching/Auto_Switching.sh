@@ -69,7 +69,7 @@ echo
                 do
                         # Switch to the next channel
 			echo "echo -e -n ${NEXT} > ${SERIAL_PORT}" | bash
-                        echo "Command send ($(date)) response: "
+                        echo -n "Command send ($(date)) response: "
                         sleep ${DELAY}
 			# Add more commands to the loop if needed
                 done
