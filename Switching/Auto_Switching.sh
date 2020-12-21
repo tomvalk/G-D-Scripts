@@ -49,7 +49,7 @@ echo "Starting script..."
 echo
 echo "Using port "${SERIAL_PORT}
 echo "Delay was set to "${DELAY}
-echo "Set Baudrate to "${BAUDRATE} "..."
+echo "Set Baudrate to "${BAUDRATE}
 stty -F ${SERIAL_PORT} ${BAUDRATE} cs8 -cstopb -parenb -ixon > /dev/null 2>&1
 if [ $? = 1 ]
         then
@@ -58,15 +58,12 @@ if [ $? = 1 ]
                 exit
 fi
 # Show response from the serial interface
-echo
-echo "Enable response from serial interface..."
+echo "Enable response from serial interface"
 pkill -9 cat
 cat ${SERIAL_PORT} &
 # Switch from setup mode to switch mode (optional)
-echo 
-echo "Enable switch mode..."
-echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash
-echo "E01 = Already in switch mode" 
+echo "Enable switch mode"
+echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash 
 echo
 echo "Starting loop (exit with q) ..."
 echo
@@ -89,4 +86,8 @@ echo
                 done
 echo
 pkill -9 cat
-echo "[Closed]"
+echo "[Script Closed]"
+echo
+echo "Tom Valk"
+echo "Guntermann & Drunck GmbH"
+echo
