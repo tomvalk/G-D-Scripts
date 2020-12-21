@@ -11,7 +11,7 @@
 # Important Settings
 #############################################
 
-# Set the port where your device is connected to e.g. ttyUSB0 or ttyS0 
+# Set the port where your device is connected to e.g. ttyUSB0 or ttyS0
 # on WSL the Windows COM3 port is the WSL ttyS3 port etc.
 SERIAL_PORT="/dev/ttyUSB0"
 
@@ -19,7 +19,7 @@ SERIAL_PORT="/dev/ttyUSB0"
 BAUDRATE="115200"
 
 # Set the delay between the commands; Possible with seconds (s) or miliseconds (0.1s) etc.
-DELAY="1s" 
+DELAY="1s"
 
 # Commands with HEX values:
 PORT_1='"\x31\x21"'     # = 1!
@@ -35,7 +35,7 @@ PORT_8='"\x38\x21"'     # = 8!
 NEXT='"\x3e\x21"'       # = <!
 PREV='"\x3c\x21"'       # = >!
 
-# With old devices that do not have their own RS232 port, 
+# With old devices that do not have their own RS232 port,
 # it is necessary to switch from setup mode to switch mode
 SWITCHMODE='"\x21"'        # Switch-Mode = !
 SETUPMODE='"\x23\x21"'     # Setup-Mode = #!
@@ -49,7 +49,7 @@ echo
 echo "Using port "${SERIAL_PORT}
 echo "Delay was set to "${DELAY}
 echo "Set Baudrate to "${BAUDRATE} "..."
-stty -F ${SERIAL_PORT} ${BAUDRATE} > /dev/null 2>&1
+stty -F ${SERIAL_PORT} ${BAUDRATE} cs8 -cstopb -parenb -ixon > /dev/null 2>&1
 if [ $? = 1 ]
         then
                 echo "Could not connect to "${SERIAL_PORT} " please check the port!"
@@ -64,11 +64,11 @@ echo "echo -e ${SWITCHMODE} > ${SERIAL_PORT}" | bash
 echo
                 while : # Loop until you exit the Script
                 do
-                        # Switch to the next channel 
+                        # Switch to the next channel
 			echo "echo -e ${NEXT} > ${SERIAL_PORT}" | bash
                         echo "Command send ( $(date) )"
-                        sleep ${DELAY}								
-			# Add more commands to the loop if needed	
+                        sleep ${DELAY}			
+			# Add more commands to the loop if needed
                 done
 echo
 echo "[Closed]"
