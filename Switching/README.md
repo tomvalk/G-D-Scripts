@@ -51,7 +51,7 @@ SETUPMODE='"\x23\x21"'     # Setup-Mode = #!
 
 ### Usage
 ```
-sudo sh ./Auto_Switching.sh
+sudo bash ./Auto_Switching.sh
 ```
 
 ### Autostart
