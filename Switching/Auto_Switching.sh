@@ -1,9 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Auto_Switching.sh
 #
 # Author: Tom Valk
 # Guntermann & Drunck GmbH
+#
+# Usage: sudo bash Auto_Switching.sh
 #
 
 #############################################
@@ -31,13 +33,13 @@ PORT_7='"\x37\x21"'     # = 7!
 PORT_8='"\x38\x21"'     # = 8!
 
 # Switching to the NEXT or PREV channel (last channel -> first channel and vice versa)
-NEXT='"\x3e\x21"'       # = <!
-PREV='"\x3c\x21"'       # = >!
+NEXT_CH='"\x3e\x21"'       # = <!
+PREV_CH='"\x3c\x21"'       # = >!
 
 # With old devices that do not have their own RS232 port,
 # it is necessary to switch from setup mode to switch mode
-SWITCHMODE='"\x21"'        # Switch-Mode = !
-SETUPMODE='"\x23\x21"'     # Setup-Mode = #!
+SWITCH_MODE='"\x21"'        # Switch-Mode = !
+SETUP_MODE='"\x23\x21"'     # Setup-Mode = #!
 
 #############################################
 # Script
@@ -55,23 +57,35 @@ if [ $? = 1 ]
                 echo "[Script Failed]"
                 exit
 fi
-echo "[Done]"
-echo
 # Show response from the serial interface
+echo
+echo "Enable response from serial interface..."
 pkill -9 cat
 cat ${SERIAL_PORT} &
 # Switch from setup mode to switch mode (optional)
-echo "echo -e ${SWITCHMODE} > ${SERIAL_PORT}" | bash
+echo 
+echo "Enable switch mode..."
+echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash
+echo "E01 = Already in switch mode" 
 echo
-echo "Starting loop (exit with CTRL + C) ..."
+echo "Starting loop (exit with q) ..."
 echo
-                while : # Loop until you exit the Script
+		# Loop until you exit the Script
+                while : 
                 do
                         # Switch to the next channel
-			echo "echo -e -n ${NEXT} > ${SERIAL_PORT}" | bash
-                        echo -n "Command send ($(date)) response: "
-                        sleep ${DELAY}
-			# Add more commands to the loop if needed
+			echo "echo -e -n ${NEXT_CH} > ${SERIAL_PORT}" | bash
+                        echo -n "Command send ($(date)) response: "                      
+			#
+                        # Add more commands to the loop if needed
+                        #
+                        # Break the loop with q or Q
+                        read -t 0.1 -N 1 INPUT
+                        if [[ $INPUT = "q" ]] || [[ $INPUT = "Q" ]]; then
+                                break                                                                                                           
+			fi
+                        # Loop   
+			sleep ${DELAY}
                 done
 echo
 pkill -9 cat
