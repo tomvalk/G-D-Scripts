@@ -11,7 +11,7 @@ It's recommend to use a real-time clock (RTC) like the DS3231 or similar if the 
 
 ## Usage:
 ```
-sudo sh ./Syslog.sh 
+sudo bash ./Syslog.sh 
 ```
 
 ## Autostart / 24h Restart
@@ -19,8 +19,8 @@ sudo sh ./Syslog.sh
 - Add the following code to ``crontab -e``
 - Important to change ``*USER*`` and ``*PATH*`` 
 ```
-@reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && sudo sh *PATH*/Syslog.sh
-@daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && sudo sh *PATH*/Syslog.sh
+@reboot export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority && sleep 10 && sudo bash *PATH*/Syslog.sh
+@daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && sudo bash *PATH*/Syslog.sh
 ```
 
 - ``export DISPLAY=:0.0`` to start a real terminal from crontab 
