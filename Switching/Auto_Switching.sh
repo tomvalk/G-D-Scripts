@@ -57,12 +57,8 @@ if [ $? = 1 ]
                 exit
 fi
 # Switch from setup mode to switch mode (optional)
-echo "Enable switch mode"
-echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash
-# Show response from the serial interface
-echo "Enable response from serial interface"
-pkill -9 cat
-cat ${SERIAL_PORT} &
+# echo "Enable switch mode"
+# echo "echo -e ${SWITCH_MODE} > ${SERIAL_PORT}" | bash
 echo
 echo "Starting loop (press Q to exit) ..."
 COUNTER=0
@@ -79,14 +75,15 @@ echo
 			echo -n "Command send ($(date)) response: "
                         
                         # Break the loop with q or Q
-                        read -t ${DELAY} -N 1 INPUT
+                        read -t 1 -N 1 INPUT
                         if [[ $INPUT = "q" ]] || [[ $INPUT = "Q" ]]; then
                                 break
 			fi
+			
+			sleep ${DELAY} 
                 done
 echo
 echo
-pkill -9 cat
 echo
 echo
 echo "[Script Closed]"
