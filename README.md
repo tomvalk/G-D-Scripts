@@ -10,9 +10,6 @@
 - PHP and CURL script for sending XML code/files via the IP-Control-API to a G&D device <br/>
 
 ---------
-## G&D-demoGUI
-- Example of how a GUI for controlling G&D devices can be created: https://github.com/tomvalk/G-D-demoGUI
----------
 
 ## Contributing
 - For changes or issues, please open an issue first to discuss what you would like to change. <br/>
