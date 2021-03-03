@@ -95,9 +95,9 @@ if [ -s /tmp/found_tty.txt ]
   		do
     			TTYPORT="$(echo ${LINE}|cut -d'/' -f3)"
 				if [ $APP = "grabserial" ]; then
-					x-terminal-emulator -t "${TTYPORT}" -e sudo grabserial -T -b ${BAUDRATE} -d ${LINE} -o ${BACKUP_SOURCE}${TTYPORT}.txt &
+					x-terminal-emulator -e grabserial -T -b ${BAUDRATE} -d ${LINE} -o ${BACKUP_SOURCE}${TTYPORT}.txt &
 				elif [ $APP = "minicom" ]; then
-					x-terminal-emulator -t "${TTYPORT}" -e sudo minicom -b ${BAUDRATE} -D ${LINE} -C ${BACKUP_SOURCE}${TTYPORT}.txt &
+					x-terminal-emulator -e minicom -b ${BAUDRATE} -D ${LINE} -C ${BACKUP_SOURCE}${TTYPORT}.txt &
 				fi
     			sleep 5s
   		done < /tmp/found_tty.txt
