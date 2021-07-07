@@ -23,7 +23,7 @@ sudo bash ./Syslog.sh
 @daily export DISPLAY=:0.0 XAUTHORITY=/home/*USER*/.Xauthority  && sleep 10 && sudo bash *PATH*/Syslog.sh
 ```
 
-- ``export DISPLAY=:0.0`` to start a real terminal from crontab 
+- ``export DISPLAY=:0.0`` to start a real terminal from crontab for interaction with the device
 - ``XAUTHORITY=/home/*USER*/.Xauthority`` needed in some applications to run properly 
 - ``sleep 10`` needed in some installations for initialise all USB ports 
 
